@@ -1,20 +1,62 @@
-# Darth Vader's wishlist
+# quarkus-wishlist
 
-<p>Java demo app illustrating usage of various Spring, JPA and Hibernate features:</p>
+This project uses Quarkus, the Supersonic Subatomic Java Framework.
 
-* **@EntityGraph** - EAGER loading of selected attributes ([ClientRepository](src/main/java/dk/cngroup/wishlist/repository/ClientRepository.java))
-* **JPA auditing** - automatic insertion of useful entity stuff ([AuditableEntity](src/main/java/dk/cngroup/wishlist/entity/AuditableEntity.java))
-* **@PrePersist** - adds new behavior to Entity before save happens ([AuditableEntity](src/main/java/dk/cngroup/wishlist/entity/AuditableEntity.java))
-* **@Where** - allows soft deletes and other permanent filtering of entities ([Client](src/main/java/dk/cngroup/wishlist/entity/Client.java))
-* **@Formula** - Hibernate computes virtual read-only column value using given expression ([Client](src/main/java/dk/cngroup/wishlist/entity/Client.java))
-* **@OrderColumn** - allows preserving collection order even after save/load ([Wishlist](src/main/java/dk/cngroup/wishlist/entity/Wishlist.java))
-* **Spring Data REST** - automatic exposure of Spring Data repositories via REST API ([spring-boot-starter-data-rest](build.gradle) dependency)
-* **@RepositoryRestController** - enhances Spring Data REST API by custom behavior ([ClientController](src/main/java/dk/cngroup/wishlist/controller/ClientController.java))
+If you want to learn more about Quarkus, please visit its website: https://quarkus.io/ .
 
-Project uses **H2 database** (can be [switched to dedicated MySQL](src/main/resources/application.yml)) initialized with [sample data](src/main/java/dk/cngroup/wishlist/DatabaseInitializer.java).
+## Running the application in dev mode
 
-Useful runtime URLs:
-* **[Swagger UI](http://localhost:8080/openapi/swagger)**
-* **[Spring Data REST API](http://localhost:8080)**
-* [Spring Data ALPS descriptors](http://localhost:8080/profile)
+You can run your application in dev mode that enables live coding using:
+```shell script
+./mvnw compile quarkus:dev
+```
 
+> **_NOTE:_**  Quarkus now ships with a Dev UI, which is available in dev mode only at http://localhost:8080/q/dev/.
+
+## Packaging and running the application
+
+The application can be packaged using:
+```shell script
+./mvnw package
+```
+It produces the `quarkus-run.jar` file in the `target/quarkus-app/` directory.
+Be aware that it’s not an _über-jar_ as the dependencies are copied into the `target/quarkus-app/lib/` directory.
+
+The application is now runnable using `java -jar target/quarkus-app/quarkus-run.jar`.
+
+If you want to build an _über-jar_, execute the following command:
+```shell script
+./mvnw package -Dquarkus.package.type=uber-jar
+```
+
+The application, packaged as an _über-jar_, is now runnable using `java -jar target/*-runner.jar`.
+
+## Creating a native executable
+
+You can create a native executable using: 
+```shell script
+./mvnw package -Dnative
+```
+
+Or, if you don't have GraalVM installed, you can run the native executable build in a container using: 
+```shell script
+./mvnw package -Dnative -Dquarkus.native.container-build=true
+```
+
+You can then execute your native executable with: `./target/quarkus-wishlist-1.0.0-SNAPSHOT-runner`
+
+If you want to learn more about building native executables, please consult https://quarkus.io/guides/maven-tooling.
+
+## Related Guides
+
+- JDBC Driver - H2 ([guide](https://quarkus.io/guides/datasource)): Connect to the H2 database via JDBC
+- Hibernate Validator ([guide](https://quarkus.io/guides/validation)): Validate object properties (field, getter) and method parameters for your beans (REST, CDI, Jakarta Persistence)
+- RESTEasy Reactive ([guide](https://quarkus.io/guides/resteasy-reactive)): A Jakarta REST implementation utilizing build time processing and Vert.x. This extension is not compatible with the quarkus-resteasy extension, or any of the extensions that depend on it.
+
+## Provided Code
+
+### RESTEasy Reactive
+
+Easily start your Reactive RESTful Web Services
+
+[Related guide section...](https://quarkus.io/guides/getting-started-reactive#reactive-jax-rs-resources)
