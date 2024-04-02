@@ -11,7 +11,7 @@ import ua.ciklum.stkn.entity.Client;
 public class ClientRepository implements PanacheRepository<Client> {
 
 
-    Client getByUserName(String userName) {
+    public Client getByUserName(String userName) {
         return this.find("userName", userName).firstResult();
     };
 

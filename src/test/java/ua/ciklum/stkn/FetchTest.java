@@ -1,14 +1,12 @@
-package dk.cngroup.wishlist;
+package ua.ciklum.stkn;
 
-import dk.cngroup.wishlist.repository.ClientRepository;
+import jakarta.inject.Inject;
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
+import ua.ciklum.stkn.repository.ClientRepository;
 
-@SpringBootTest
 public class FetchTest {
 
-    @Autowired
+    @Inject
     ClientRepository clientRepository;
 
     //check log to see the difference in SQL executed by Hibernate
