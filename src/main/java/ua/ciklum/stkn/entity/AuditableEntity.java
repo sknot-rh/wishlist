@@ -24,7 +24,7 @@ public class AuditableEntity extends PanacheEntity {
         if (isBlank(createdBy)) createdBy = "system";
     }
 
-    public LocalDateTime getCreated() {
+    /*public LocalDateTime getCreated() {
         return created;
     }
 
@@ -34,5 +34,5 @@ public class AuditableEntity extends PanacheEntity {
 
     public String getCreatedBy() {
         return createdBy;
-    }
+    }*/
 }

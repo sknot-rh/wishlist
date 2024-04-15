@@ -37,6 +37,7 @@ public class Client extends AuditableEntity {
     }
 
     public void addWishlist(Wishlist wishes) {
+        wishes.setClient(this);
         this.wishes.add(wishes);
     }
 

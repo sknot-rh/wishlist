@@ -21,4 +21,20 @@ public class Wishlist extends AuditableEntity {
 
     public Wishlist() {
     }
+
+    public void setClient(Client client) {
+        this.client = client;
+    }
+
+    public void setProducts(List<Product> products) {
+        this.products = products;
+    }
+
+    public Client getClient() {
+        return client;
+    }
+
+    public List<Product> getProducts() {
+        return products;
+    }
 }
